@@ -1,0 +1,19 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: nodejsapp-production
+  namespace: production
+  annotations:
+    fluxcd.io/automated: "true"
+spec:
+  releaseName: nodejsapp-production
+  chart:
+    git: git@github.com:rajbhavesh7/devopsengineeringchallenge
+    path: nodejsapp
+    ref: master
+  values:
+    environment: production
+    replicaCount: 1
+    hpa:
+      enabled: false

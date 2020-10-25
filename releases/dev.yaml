@@ -1,0 +1,19 @@
+---
+apiVersion: helm.fluxcd.io/v1
+kind: HelmRelease
+metadata:
+  name: nodejsapp-devlop
+  namespace: devlop
+  annotations:
+    fluxcd.io/automated: "true"
+spec:
+  releaseName: nodejsapp-devlop
+  chart:
+    git: git@github.com:rajbhavesh7/devopsengineeringchallenge
+    path: nodejsapp
+    ref: master
+  values:
+    environment: devlopment
+    replicaCount: 1
+    hpa:
+      enabled: false
